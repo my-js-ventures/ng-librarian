@@ -41,15 +41,17 @@ header-banner {
           border-bottom-color: @secondary;
         }
 
-        &:hover,
-        &:focus,
-        &:active {
-          color: @header-foreground;
-        }
-
         &.active {
           border-bottom-color: @header-foreground;
         }
+      }
+    }
+
+    a {
+      &:hover,
+      &:focus,
+      &:active {
+        color: @header-foreground;
       }
     }
   }

@@ -1,0 +1,26 @@
+@import (reference) "../../../../../less/variables";
+
+header-user-info {
+  display: block;
+  background-color: @secondary;
+  padding: 5px 0;
+
+  .content {
+    display: flex;
+    justify-content: flex-end;
+
+    .user.icon:after {
+      content: "person";
+      margin-right: 20px;
+    }
+
+    .home.icon:after {
+      margin-right: 20px;
+      content: "home";
+    }
+
+    .cart.icon:after {
+      content: "shopping_cart";
+    }
+  }
+}

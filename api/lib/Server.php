@@ -59,11 +59,11 @@ class Server {
 
         if (file_exists('handlers/' . $url[0] . '.php')) {
 
-            $handler = "handlers\\".$url[0];
+            $handler = "handlers\\" . $url[0];
             $handler = new $handler();
             $params = array_slice($url, 1);
 
-            array_merge($params, $this->getData());
+            $params = array_merge($params, $this->getData());
 
             if (method_exists($handler, $method)) {
                 call_user_func_array([$handler, $method], $params);

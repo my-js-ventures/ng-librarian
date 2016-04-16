@@ -11,7 +11,8 @@
     'home',
     'books',
     'authors',
-    'subjects'
+    'subjects',
+    'search'
   ]);
 
   angular.element(document)

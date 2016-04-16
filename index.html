@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Librarian</title>
+    <link rel="stylesheet" href="css/material/material-icons.css">
+    <link rel="stylesheet" href="css/master.css">
+  </head>
+  <body>
+
+    <div ui-view></div>
+
+    <loader></loader>
+
+    <!-- Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-ui-router/angular-ui-router.js"></script>
+
+    <!-- Components -->
+    <script src="src/components/components.js"></script>
+    <script src="src/components/attribute/attribute.js"></script>
+    <script src="src/components/loader/loader.js"></script>
+    <script src="src/components/loader/loader-svc.js"></script>
+
+    <!-- Views -->
+    <!-- App -->
+    <script src="src/views/app/app.js"></script>
+    <script src="src/views/app/routes.js"></script>
+    <script src="src/views/app/loader.js"></script>
+    <script src="src/views/app/header/header.js"></script>
+    <script src="src/views/app/header/banner/banner.js"></script>
+    <script src="src/views/app/header/user-info/user-info.js"></script>
+    <script src="src/views/app/body/body.js"></script>
+
+    <!-- Home -->
+    <script src="src/views/home/home.js"></script>
+    <script src="src/views/home/routes.js"></script>
+
+    <!-- Books -->
+    <script src="src/views/books/books.js"></script>
+    <script src="src/views/books/routes.js"></script>
+    <script src="src/views/books/books-list/books-list.js"></script>
+    <script src="src/views/books/books-list/books-list-svc.js"></script>
+    <script src="src/views/books/book/book.js"></script>
+    <script src="src/views/books/filters/filters.js"></script>
+
+    <!-- Authors -->
+    <script src="src/views/authors/authors.js"></script>
+    <script src="src/views/authors/routes.js"></script>
+    <script src="src/views/authors/authors-list/authors-list.js"></script>
+    <script src="src/views/authors/authors-list/authors-list-svc.js"></script>
+    <script src="src/views/authors/author/author.js"></script>
+
+    <!-- Subjects -->
+    <script src="src/views/subjects/subjects.js"></script>
+    <script src="src/views/subjects/routes.js"></script>
+    <script src="src/views/subjects/subjects-list/subjects-list.js"></script>
+    <script src="src/views/subjects/subjects-list/subjects-list-svc.js"></script>
+    <script src="src/views/subjects/subject/subject.js"></script>
+
+    <!-- Source -->
+    <script src="src/main.js"></script>
+  </body>
+</html>

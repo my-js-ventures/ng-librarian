@@ -12,6 +12,7 @@
         bindToController: {
           author: '='
         },
+        scope: true,
         templateUrl: './src/views/authors/author/author.html'
       };
     });

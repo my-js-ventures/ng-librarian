@@ -12,6 +12,7 @@
         bindToController: {
           subject: '='
         },
+        scope: true,
         templateUrl: './src/views/subjects/subject/subject.html'
       };
     });

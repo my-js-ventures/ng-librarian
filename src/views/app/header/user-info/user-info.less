@@ -9,6 +9,14 @@ header-user-info {
     display: flex;
     justify-content: flex-end;
 
+    a {
+      &:hover,
+      &:focus,
+      &:active {
+        color: @header-foreground;
+      }
+    }
+
     .home.icon,
     .user.icon {
       margin-right: 20px;

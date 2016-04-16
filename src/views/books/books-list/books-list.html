@@ -1,6 +1,6 @@
 <book-filters></book-filters>
 <book
-  ng-repeat="book in vm.books track by book.id"
+  ng-repeat="book in vm.books track by book.bookid"
   set-active="vm.setActive(book)"
   active="vm.activeBook === book"
   book="book"

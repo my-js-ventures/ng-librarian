@@ -1,0 +1,55 @@
+@import (reference) "../../../../less/mixins";
+@import (reference) "../../../../less/variables";
+
+book-details {
+
+  header {
+    .details-header();
+  }
+
+  main {
+    .attributes {
+      margin-bottom: 25px;
+
+      attribute {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1em;
+
+        .label {
+          color: @surface-secondary-foreground;
+        }
+
+        .value {
+          color: @card-foreground;
+        }
+      }
+    }
+
+    .authors,
+    .subjects {
+      display: flex;
+      flex-flow: row wrap;
+
+      h3 {
+        flex-basis: 100%;
+        margin-bottom: 10px;
+      }
+
+      author,
+      subject {
+        &:extend(.card-1);
+        flex-basis: 100%;
+        margin-bottom: 25px;
+
+        @media screen and (min-width: 625px) {
+          flex-basis: 49%;
+
+          &:nth-of-type(2n-1) {
+            margin-right: 2%;
+          }
+        }
+      }
+    }
+  }
+}

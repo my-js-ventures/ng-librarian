@@ -1,0 +1,43 @@
+<header>
+  <h2>
+    <i class="icon book"></i>
+    {{vm.details.title}}
+  </h2>
+  <a ui-sref="books.list" class="back">
+    <i class="icon back"></i>
+    Back to List
+  </a>
+</header>
+<main>
+  <section class="attributes">
+    <attribute
+      label="Accession #"
+      value="{{vm.details.accessno}}"
+    ></attribute>
+    <attribute
+      label="Rack #"
+      value="{{vm.details.rackno}}"
+    ></attribute>
+    <attribute
+      label="Date Added"
+      value="{{vm.details.adddate}}"
+    ></attribute>
+  </section>
+
+  <section class="subjects">
+    <h3>Subject</h3>
+    <subject
+      subject="vm.subject"
+    >
+    </subject>
+  </section>
+
+  <section class="authors">
+    <h3>Authors</h3>
+    <author
+      ng-repeat="author in vm.authors"
+      author="author"
+    >
+    </author>
+  </section>
+</main>

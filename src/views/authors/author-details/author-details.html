@@ -1,0 +1,24 @@
+<header>
+  <h2>
+    <i class="icon person"></i>
+    {{vm.details.name}}
+  </h2>
+  <a ui-sref="authors.list" class="back">
+    <i class="icon back"></i>
+    Back to List
+  </a>
+</header>
+<main ng-if="vm.details.books.length">
+  <h3>
+    Books written:
+  </h3>
+  <section class="list">
+    <book
+      ng-repeat="book in vm.details.books track by book.bookid"
+      set-active="vm.setActive(book)"
+      active="vm.activeBook === book"
+      book="book"
+    >
+    </book>
+  </section>
+</main>

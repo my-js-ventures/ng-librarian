@@ -5,6 +5,7 @@
 
   angular.module(appName, [
     'ui.router',
+    'ngAnimate',
     'app',
     'components',
     'home',

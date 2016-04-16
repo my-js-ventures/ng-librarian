@@ -1,0 +1,30 @@
+@import (reference) "../../../less/variables";
+
+radio {
+
+  label {
+    display: block;
+    margin-bottom: 15px;
+
+    input[type=radio] {
+      display: none;
+
+      & + .check {
+        display: inline-block;
+        vertical-align: text-bottom;
+        margin-right: 10px;
+        color: @secondary;
+        font-family: "Material Icons";
+        &:after {
+          content: "radio_button_unchecked";
+        }
+      }
+
+      &:checked + .check {
+        &:after {
+          content: "radio_button_checked";
+        }
+      }
+    }
+  }
+}

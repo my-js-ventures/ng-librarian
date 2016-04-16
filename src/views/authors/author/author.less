@@ -1,0 +1,22 @@
+@import (reference) "../../../../less/variables";
+@import (reference) "../../../../less/mixins";
+
+author {
+  display: block;
+  transition: all 0.3s ease-in-out;
+  padding: 15px;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid @grid-divider;
+  }
+
+  .icon.person:after {
+    content: "person";
+    margin-right: 10px;
+  }
+
+  .bubble {
+    .draw-bubble();
+    margin-left: 10px;
+  }
+}

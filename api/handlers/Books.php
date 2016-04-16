@@ -2,26 +2,39 @@
 
 namespace handlers;
 
+use lib\Error;
 use lib\Handler;
 
 class Books extends Handler {
 
-    public function get() {
+    public function get($id) {
 
-        $books = $this->select(
-            'SELECT b.*, s.name AS subject FROM books b ' .
-            'JOIN subjects s ON s.id = b.subjectid'
-        );
+        if (isset($id)) {
 
-        foreach ($books as &$book) {
-            $book['authors'] = $this->select(
+            $response = $this->select(
+                'SELECT b.*, s.name AS subject FROM books b ' .
+                'JOIN subjects s ON s.id = b.subjectid ' .
+                'WHERE b.id = ?',
+                [$id]
+            );
+
+            if ($response) {
+                $response = $response[0];
+            } else {
+                (new Error('Subject Not Found'))->send();
+            }
+
+            $response['authors'] = $this->select(
                 'SELECT a.id AS authorid, a.name FROM authors a ' .
                 'JOIN authorassoc aa ON aa.authorid = a.id ' .
-                'WHERE aa.bookid = "' . $book['id'] . '"'
+                'WHERE aa.bookid = ?',
+                [$id]
             );
+        } else {
+            $response = $this->select('SELECT * FROM books');
         }
 
-        $this->send($books);
+        $this->send($response);
     }
 
     public function getBooksByAuthor($id) {

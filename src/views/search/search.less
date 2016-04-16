@@ -1,0 +1,42 @@
+@import (reference) "../../../less/mixins";
+
+search {
+
+  header {
+    .details-header();
+  }
+
+  main {
+    display: flex;
+
+    .left {
+      flex-basis: 20%;
+      padding-top: 25px;
+    }
+
+    .right {
+      flex-basis: 80%;
+
+      .input {
+        &:extend(.card-2);
+        padding: 15px;
+        margin-bottom: 20px;
+        display: flex;
+
+        input {
+          flex-grow: 1;
+        }
+
+        &:after {
+          &:extend(.icon);
+          content: "search";
+          color: @surface-secondary-foreground;
+        }
+      }
+
+      .list {
+        &:extend(.card-1);
+      }
+    }
+  }
+}

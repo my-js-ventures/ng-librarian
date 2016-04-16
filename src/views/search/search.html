@@ -1,0 +1,32 @@
+<header>
+  <h2>
+    <i class="icon search"></i>
+    Search Library
+  </h2>
+</header>
+<main>
+
+  <section class="left">
+    <radio ng-model="vm.type" label="All"></radio>
+    <radio ng-model="vm.type" label="Books" value="book"></radio>
+    <radio ng-model="vm.type" label="Authors" value="author"></radio>
+    <radio ng-model="vm.type" label="Subjects" value="subject"></radio>
+  </section>
+
+  <section class="right">
+    <div class="input">
+      <input
+        type="text"
+        placeholder="Type to search Books, Authors and Subjects"
+        ng-model="vm.query"
+      >
+    </div>
+    <div class="list">
+      <search-item
+        ng-repeat="item in vm.list | filter: {type: vm.type} | filter: vm.search"
+        item="item"
+      ></search-item>
+    </div>
+  </section>
+
+</main>

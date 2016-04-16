@@ -11,7 +11,7 @@ class Subjects extends Handler {
 
         if (isset($id)) {
             $response = $this->select(
-                'SELECT * FROM subjects WHERE id = ?',
+                'SELECT * FROM subjects WHERE subjectid = ?',
                 [$id]
             );
 
@@ -24,7 +24,7 @@ class Subjects extends Handler {
             $response['books'] = (new Books())->getBooksBySubject($id);
         } else {
             $response = $this->select(
-                'SELECT s.*, (SELECT count(id) FROM books WHERE subjectid = s.id) AS has ' .
+                'SELECT s.*, (SELECT count(subjectid) FROM books WHERE subjectid = s.subjectid) AS has ' .
                 'FROM subjects s'
             );
         }

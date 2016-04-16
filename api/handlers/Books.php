@@ -13,8 +13,8 @@ class Books extends Handler {
 
             $response = $this->select(
                 'SELECT b.*, s.name AS subject FROM books b ' .
-                'JOIN subjects s ON s.id = b.subjectid ' .
-                'WHERE b.id = ?',
+                'JOIN subjects s USING (subjectid) ' .
+                'WHERE b.bookid = ?',
                 [$id]
             );
 
@@ -25,8 +25,8 @@ class Books extends Handler {
             }
 
             $response['authors'] = $this->select(
-                'SELECT a.id AS authorid, a.name FROM authors a ' .
-                'JOIN authorassoc aa ON aa.authorid = a.id ' .
+                'SELECT a.* FROM authors a ' .
+                'JOIN authorassoc aa USING (authorid) ' .
                 'WHERE aa.bookid = ?',
                 [$id]
             );
@@ -40,7 +40,7 @@ class Books extends Handler {
     public function getBooksByAuthor($id) {
 
         return $this->select(
-            'SELECT * FROM books JOIN authorassoc ON books.id = authorassoc.bookid WHERE authorid = ?',
+            'SELECT b.* FROM books b JOIN authorassoc aa USING (bookid) WHERE aa.authorid = ?',
             [$id]
         );
     }

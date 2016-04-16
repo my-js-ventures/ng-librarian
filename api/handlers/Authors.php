@@ -11,7 +11,7 @@ class Authors extends Handler {
 
         if (isset($id)) {
             $response = $this->select(
-                'SELECT * FROM authors WHERE id = ?',
+                'SELECT * FROM authors WHERE authorid = ?',
                 [$id]
             );
 
@@ -24,7 +24,7 @@ class Authors extends Handler {
             $response['books'] = (new Books())->getBooksByAuthor($id);
         } else {
             $response = $this->select(
-                'SELECT *, (SELECT count(*) FROM authorassoc WHERE authorid = a.id) as written ' .
+                'SELECT *, (SELECT count(*) FROM authorassoc WHERE authorid = a.authorid) as written ' .
                 'FROM authors a'
             );
         }

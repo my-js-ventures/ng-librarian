@@ -1,14 +1,9 @@
-(function () {
+const headerUserInfo = {
+  restrict: 'E',
+  templateUrl: './src/views/app/header/user-info/user-info.html'
+};
 
-  var angular = window.angular;
-
-  angular
-    .module('app')
-    .directive('headerUserInfo', function () {
-      return {
-        restrict: 'E',
-        templateUrl: './src/views/app/header/user-info/user-info.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('app.header.user-info', [])
+  .directive('headerUserInfo', () => headerUserInfo)
+  .name;

@@ -1,14 +1,13 @@
-(function () {
+import routes from './routes.js';
 
-  var angular = window.angular;
+const home = {
+  restrict: 'E',
+  templateUrl: './src/views/home/home.html'
+};
 
-  angular
-    .module('home', [])
-    .directive('home', function () {
-      return {
-        restrict: 'E',
-        templateUrl: './src/views/home/home.html'
-      };
-    });
+export default window.angular
+  .module('home', [])
+  .config(routes)
+  .directive('home', () => home)
+  .name;
 
-}());

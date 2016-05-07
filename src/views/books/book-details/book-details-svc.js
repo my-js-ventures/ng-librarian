@@ -1,24 +1,14 @@
-(function () {
+export default class BookDetailsSvc {
 
-  var angular = window.angular;
+  constructor($http) {
 
-  function BookDetailsSvc($http) {
-
-    function getBookDetails(id) {
-
-      return $http.get('/api/books/' + id)
-        .then(function (response) {
-          return response.data;
-        });
-    }
-
-    return {
-      getBookDetails: getBookDetails
-    };
+    this.$http = $http;
   }
 
-  angular
-    .module('books')
-    .service('BookDetailsSvc', BookDetailsSvc);
+  getBookDetails(id) {
 
-}());
+    return this.$http
+      .get('/api/books/' + id)
+      .then(response => response.data);
+  }
+}

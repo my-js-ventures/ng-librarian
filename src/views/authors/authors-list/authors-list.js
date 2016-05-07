@@ -1,27 +1,15 @@
-(function () {
+import AuthorsListCtrl from './authors-list-ctrl.js';
+import AuthorsListSvc from './authors-list-svc.js';
 
-  var angular = window.angular;
+const authorsList = {
+  restrict: 'E',
+  controller: AuthorsListCtrl,
+  controllerAs: 'vm',
+  templateUrl: './src/views/authors/authors-list/authors-list.html'
+};
 
-  function Controller(AuthorsListSvc) {
-
-    var vm = this;
-
-    AuthorsListSvc.getAuthors()
-      .then(function (authors) {
-        vm.authors = authors;
-      });
-
-  }
-
-  angular
-    .module('authors')
-    .directive('authorsList', function () {
-      return {
-        restrict: 'E',
-        controller: Controller,
-        controllerAs: 'vm',
-        templateUrl: './src/views/authors/authors-list/authors-list.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('authors.list', [])
+  .service('AuthorsListSvc', AuthorsListSvc)
+  .directive('authorsList', () => authorsList)
+  .name;

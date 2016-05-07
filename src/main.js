@@ -1,23 +1,31 @@
-(function () {
+import 'angular';
+import 'angular/animate';
+import 'angular/ui-router';
+import 'jquery';
 
-  var angular = window.angular,
-    appName = 'ng-librarian';
+import app from './views/app/app.js';
+import authors from './views/authors/authors.js';
+import books from './views/books/books.js';
+import components from './components/components.js';
+import home from './views/home/home.js';
+import search from './views/search/search.js';
+import subjects from './views/subjects/subjects.js';
 
-  angular.module(appName, [
-    'ui.router',
-    'ngAnimate',
-    'app',
-    'components',
-    'home',
-    'books',
-    'authors',
-    'subjects',
-    'search'
-  ]);
+const angular = window.angular;
+const appName = 'ng-librarian';
+const module = angular.module(appName, [
+  'ui.router',
+  'ngAnimate',
+  app,
+  authors,
+  books,
+  components,
+  home,
+  search,
+  subjects
+]);
 
-  angular.element(document)
-    .ready(function () {
-      angular.bootstrap(document, [appName]);
-    });
+angular.element(document)
+  .ready(() => angular.bootstrap(document, [appName]));
 
-}());
+export default module.name;

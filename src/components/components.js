@@ -1,7 +1,11 @@
-(function () {
+import attribute from './attribute/attribute.js';
+import loader from './loader/loader.js';
+import radio from './radio/radio.js';
 
-  var angular = window.angular;
-
-  angular.module('components', []);
-
-}());
+export default window.angular
+  .module('components', [
+    attribute,
+    loader,
+    radio
+  ])
+  .name;

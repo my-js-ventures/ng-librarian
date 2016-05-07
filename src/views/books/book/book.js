@@ -1,22 +1,14 @@
-(function () {
+const book = {
+  restrict: 'E',
+  scope: {
+    book: '=',
+    active: '=',
+    setActive: '&'
+  },
+  templateUrl: './src/views/books/book/book.html'
+};
 
-  var angular = window.angular;
-
-  angular
-    .module('books')
-    .directive('book', function () {
-      return {
-        restrict: 'E',
-        controller: new Function(),
-        controllerAs: 'vm',
-        bindToController: {
-          book: '=',
-          active: '=',
-          setActive: '&'
-        },
-        scope: true,
-        templateUrl: './src/views/books/book/book.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('books.book', [])
+  .directive('book', () => book)
+  .name;

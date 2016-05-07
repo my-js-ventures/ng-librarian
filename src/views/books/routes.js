@@ -1,41 +1,29 @@
-(function () {
+const books = {
+  name: 'books',
+  parent: 'app',
+  url: '/books',
+  abstract: true,
+  template: '<books />'
+};
 
-  var angular = window.angular;
+const booksAll = {
+  name: 'books.list',
+  url: '/list',
+  template: '<books-list />'
+};
 
-  var books = {
-    name: 'books',
-    parent: 'app',
-    url: '/books',
-    abstract: true,
-    template: '<books />'
-  };
+const bookDetails = {
+  name: 'books.details',
+  url: '/:id/details',
+  template: '<book-details />'
+};
 
-  var booksAll = {
-    name: 'books.list',
-    url: '/list',
-    template: '<books-list />'
-  };
+export default function config($stateProvider, $urlRouterProvider) {
 
-  var bookDetails = {
-    name: 'books.details',
-    url: '/:id/details',
-    template: '<book-details />'
-  };
+  $stateProvider
+    .state(books)
+    .state(booksAll)
+    .state(bookDetails);
 
-  angular
-    .module('books')
-    .config(function (
-      $stateProvider,
-      $urlRouterProvider
-    ) {
-
-      $stateProvider
-        .state(books)
-        .state(booksAll)
-        .state(bookDetails);
-
-      $urlRouterProvider.when('/books', '/books/all');
-
-    });
-
-}());
+  $urlRouterProvider.when('/books', '/books/all');
+}

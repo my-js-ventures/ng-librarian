@@ -1,14 +1,9 @@
-(function () {
+const appBody = {
+  restrict: 'E',
+  templateUrl: './src/views/app/body/body.html'
+};
 
-  var angular = window.angular;
-
-  angular
-    .module('app')
-    .directive('appBody', function () {
-      return {
-        restrict: 'E',
-        templateUrl: './src/views/app/body/body.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('app.body', [])
+  .directive('appBody', () => appBody)
+  .name;

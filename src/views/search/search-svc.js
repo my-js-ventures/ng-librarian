@@ -1,24 +1,14 @@
-(function () {
+export default class SearchSvc {
 
-  var angular = window.angular;
+  constructor($http) {
 
-  function SearchSvc($http) {
-
-    function getSearchList() {
-
-      return $http.get('/api/search')
-        .then(function (response) {
-          return response.data;
-        });
-    }
-
-    return {
-      getSearchList: getSearchList
-    };
+    this.$http = $http;
   }
 
-  angular
-    .module('books')
-    .service('SearchSvc', SearchSvc);
+  getSearchList() {
 
-}());
+    return this.$http
+      .get('/api/search')
+      .then(response => response.data);
+  }
+}

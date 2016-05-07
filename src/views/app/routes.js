@@ -1,22 +1,11 @@
-(function () {
+const app = {
+  name: 'app',
+  abstract: true,
+  template: '<app />'
+};
 
-  var angular = window.angular;
+export default function routes($stateProvider) {
 
-  var app = {
-    name: 'app',
-    abstract: true,
-    template: '<app />'
-  };
-
-  angular
-    .module('app')
-    .config(function (
-      $stateProvider
-    ) {
-
-      $stateProvider
-        .state(app);
-
-    });
-
-}());
+  $stateProvider
+    .state(app);
+}

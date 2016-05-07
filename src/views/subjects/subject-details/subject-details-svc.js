@@ -1,24 +1,14 @@
-(function () {
+export default class SubjectDetailsSvc {
 
-  var angular = window.angular;
+  constructor($http) {
 
-  function SubjectDetailsSvc($http) {
-
-    function getSubjectDetails(id) {
-
-      return $http.get('/api/subjects/' + id)
-        .then(function (response) {
-          return response.data;
-        });
-    }
-
-    return {
-      getSubjectDetails: getSubjectDetails
-    };
+    this.$http = $http;
   }
 
-  angular
-    .module('subjects')
-    .service('SubjectDetailsSvc', SubjectDetailsSvc);
+  getSubjectDetails(id) {
 
-}());
+    return this.$http
+      .get('/api/subjects/' + id)
+      .then(response => response.data);
+  }
+}

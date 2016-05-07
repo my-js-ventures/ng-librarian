@@ -1,17 +1,9 @@
-(function () {
+export default class LoaderSvc {
 
-  var angular = window.angular;
-
-  function LoaderSvc() {
+  constructor() {
 
     this.status = {
       isLoading: false
     };
-
   }
-
-  angular
-    .module('components')
-    .service('LoaderSvc', LoaderSvc);
-
-}());
+}

@@ -1,23 +1,12 @@
-(function () {
+const search = {
+  name: 'search',
+  parent: 'app',
+  url: '/search',
+  template: '<search />'
+};
 
-  var angular = window.angular;
+export default function ($stateProvider) {
 
-  var search = {
-    name: 'search',
-    parent: 'app',
-    url: '/search',
-    template: '<search />'
-  };
-
-  angular
-    .module('search')
-    .config(function (
-      $stateProvider
-    ) {
-
-      $stateProvider
-        .state(search);
-
-    });
-
-}());
+  $stateProvider
+    .state(search);
+}

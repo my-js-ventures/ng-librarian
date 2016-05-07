@@ -1,48 +1,20 @@
-(function () {
+import SearchCtrl from './search-ctrl.js';
+import SearchSvc from './search-svc.js';
+import routes from './routes.js';
+import searchItem from './search-item/search-item.js';
 
-  var angular = window.angular;
+const search = {
+  restrict: 'E',
+  controller: SearchCtrl,
+  controllerAs: 'vm',
+  templateUrl: './src/views/search/search.html'
+};
 
-  function Controller(SearchSvc) {
-
-    var vm = this;
-
-    function matchAccessionNumber(match, accessno, query) {
-
-      return accessno ? match || accessno.toString().indexOf(query) !== -1 : match;
-    }
-
-    function matchRackNumber(match, rackno, query) {
-
-      return rackno ? match || rackno.toLowerCase().indexOf(query) !== -1 : match;
-    }
-
-    SearchSvc.getSearchList()
-      .then(function (list) {
-        vm.list = list;
-      });
-
-    vm.search = function (row) {
-
-      var query = (vm.query || '').toLowerCase();
-
-      var match = matchAccessionNumber(false, row.accessno, query);
-      match = matchRackNumber(match, row.rackno, query);
-
-      return match || row.name.toLowerCase().indexOf(query) !== -1;
-
-    };
-
-  }
-
-  angular
-    .module('search', [])
-    .directive('search', function () {
-      return {
-        restrict: 'E',
-        controller: Controller,
-        controllerAs: 'vm',
-        templateUrl: './src/views/search/search.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('search', [
+    searchItem
+  ])
+  .config(routes)
+  .service('SearchSvc', SearchSvc)
+  .directive('search', () => search)
+  .name;

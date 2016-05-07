@@ -1,24 +1,14 @@
-(function () {
+export default class AuthorDetailsSvc {
 
-  var angular = window.angular;
+  constructor($http) {
 
-  function AuthorDetailsSvc($http) {
-
-    function getAuthorDetails(id) {
-
-      return $http.get('/api/authors/' + id)
-        .then(function (response) {
-          return response.data;
-        });
-    }
-
-    return {
-      getAuthorDetails: getAuthorDetails
-    };
+    this.$http = $http;
   }
 
-  angular
-    .module('authors')
-    .service('AuthorDetailsSvc', AuthorDetailsSvc);
+  getAuthorDetails(id) {
 
-}());
+    return this.$http
+      .get('/api/authors/' + id)
+      .then(response => response.data);
+  }
+}

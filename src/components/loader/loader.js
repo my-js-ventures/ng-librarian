@@ -1,24 +1,16 @@
-(function () {
+import LoaderCtrl from './loader-ctrl.js';
+import LoaderSvc from './loader-svc.js';
 
-  var angular = window.angular;
+const loader = {
+  restrict: 'E',
+  controller: LoaderCtrl,
+  controllerAs: 'vm',
+  templateUrl: './src/components/loader/loader.html'
+};
 
-  function Controller(LoaderSvc) {
+export default window.angular
+  .module('components.loader', [])
+  .service('LoaderSvc', LoaderSvc)
+  .directive('loader', () => loader)
+  .name;
 
-    var vm = this;
-
-    vm.status = LoaderSvc.status;
-
-  }
-
-  angular
-    .module('components')
-    .directive('loader', function () {
-      return {
-        restrict: 'E',
-        controller: Controller,
-        controllerAs: 'vm',
-        templateUrl: './src/components/loader/loader.html'
-      };
-    });
-
-}());

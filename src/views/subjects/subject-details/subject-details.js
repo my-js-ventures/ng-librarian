@@ -1,29 +1,15 @@
-(function () {
+import SubjectDetailsCtrl from './subject-details-ctrl.js';
+import SubjectDetailsSvc from './subject-details-svc.js';
 
-  var angular = window.angular;
+const subjectDetails = {
+  restrict: 'E',
+  controller: SubjectDetailsCtrl,
+  controllerAs: 'vm',
+  templateUrl: './src/views/subjects/subject-details/subject-details.html'
+};
 
-  function Controller(
-    $stateParams,
-    SubjectDetailsSvc
-  ) {
-
-    var vm = this;
-
-    SubjectDetailsSvc.getSubjectDetails($stateParams.id)
-      .then(function (details) {
-        vm.details = details;
-      });
-  }
-
-  angular
-    .module('subjects')
-    .directive('subjectDetails', function () {
-      return {
-        restrict: 'E',
-        controller: Controller,
-        controllerAs: 'vm',
-        templateUrl: './src/views/subjects/subject-details/subject-details.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('subjects.subject.details', [])
+  .service('SubjectDetailsSvc', SubjectDetailsSvc)
+  .directive('subjectDetails', () => subjectDetails)
+  .name;

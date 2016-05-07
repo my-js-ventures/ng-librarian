@@ -1,27 +1,15 @@
-(function () {
+import SubjectsListCtrl from './subjects-list-ctrl.js';
+import SubjectsListSvc from './subjects-list-svc.js';
 
-  var angular = window.angular;
+const subjectsList = {
+  restrict: 'E',
+  controller: SubjectsListCtrl,
+  controllerAs: 'vm',
+  templateUrl: './src/views/subjects/subjects-list/subjects-list.html'
+};
 
-  function Controller(SubjectsListSvc) {
-
-    var vm = this;
-
-    SubjectsListSvc.getSubjects()
-      .then(function (subjects) {
-        vm.subjects = subjects;
-      });
-
-  }
-
-  angular
-    .module('subjects')
-    .directive('subjectsList', function () {
-      return {
-        restrict: 'E',
-        controller: Controller,
-        controllerAs: 'vm',
-        templateUrl: './src/views/subjects/subjects-list/subjects-list.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('subjects.list', [])
+  .service('SubjectsListSvc', SubjectsListSvc)
+  .directive('subjectsList', () => subjectsList)
+  .name;

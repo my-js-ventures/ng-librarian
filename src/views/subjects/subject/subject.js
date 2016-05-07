@@ -1,20 +1,12 @@
-(function () {
+const subject = {
+  restrict: 'E',
+  scope: {
+    subject: '='
+  },
+  templateUrl: './src/views/subjects/subject/subject.html'
+};
 
-  var angular = window.angular;
-
-  angular
-    .module('subjects')
-    .directive('subject', function () {
-      return {
-        restrict: 'E',
-        controller: new Function(),
-        controllerAs: 'vm',
-        bindToController: {
-          subject: '='
-        },
-        scope: true,
-        templateUrl: './src/views/subjects/subject/subject.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('subjects.subject', [])
+  .directive('subject', () => subject)
+  .name;

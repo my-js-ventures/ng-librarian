@@ -1,21 +1,13 @@
-(function () {
+const attribute = {
+  restrict: 'E',
+  scope: {
+    label: '@',
+    value: '@'
+  },
+  templateUrl: './src/components/attribute/attribute.html'
+};
 
-  var angular = window.angular;
-
-  angular
-    .module('components')
-    .directive('attribute', function () {
-      return {
-        restrict: 'E',
-        controller: new Function(),
-        controllerAs: 'vm',
-        bindToController: {
-          label: '@',
-          value: '@'
-        },
-        scope: true,
-        templateUrl: './src/components/attribute/attribute.html'
-      };
-    });
-
-}());
+export default window.angular
+  .module('components.attribute', [])
+  .directive('attribute', () => attribute)
+  .name;

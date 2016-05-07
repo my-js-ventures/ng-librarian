@@ -1,41 +1,29 @@
-(function () {
+const subjects = {
+  name: 'subjects',
+  parent: 'app',
+  url: '/subjects',
+  abstract: true,
+  template: '<subjects />'
+};
 
-  var angular = window.angular;
+const subjectsAll = {
+  name: 'subjects.list',
+  url: '/list',
+  template: '<subjects-list />'
+};
 
-  var subjects = {
-    name: 'subjects',
-    parent: 'app',
-    url: '/subjects',
-    abstract: true,
-    template: '<subjects />'
-  };
+const subjectDetails = {
+  name: 'subjects.details',
+  url: '/:id/details',
+  template: '<subject-details />'
+};
 
-  var subjectsAll = {
-    name: 'subjects.list',
-    url: '/list',
-    template: '<subjects-list />'
-  };
+export default function ($stateProvider, $urlRouterProvider) {
 
-  var subjectDetails = {
-    name: 'subjects.details',
-    url: '/:id/details',
-    template: '<subject-details />'
-  };
+  $stateProvider
+    .state(subjects)
+    .state(subjectsAll)
+    .state(subjectDetails);
 
-  angular
-    .module('subjects')
-    .config(function (
-      $stateProvider,
-      $urlRouterProvider
-    ) {
-
-      $stateProvider
-        .state(subjects)
-        .state(subjectsAll)
-        .state(subjectDetails);
-
-      $urlRouterProvider.when('/subjects', '/subjects/all');
-
-    });
-
-}());
+  $urlRouterProvider.when('/subjects', '/subjects/all');
+}
